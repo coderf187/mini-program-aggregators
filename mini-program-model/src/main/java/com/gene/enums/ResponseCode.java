@@ -8,7 +8,7 @@ import java.util.Objects;
 public enum ResponseCode {
 
     //请求成功并返回数据
-    OK("200", "OK"),
+    OK("200", "操作成功"),
     //无权限请求
     UNAUTHORIZED("401", "无权访问，请重新登录"),
     //验证身份失败
