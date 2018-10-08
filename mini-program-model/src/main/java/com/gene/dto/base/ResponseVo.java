@@ -14,25 +14,25 @@ public class ResponseVo<T> implements Serializable {
 
     private String code;
 
-    private String message;
+    private String msg;
 
-    private T result;
+    private T data;
 
     public ResponseVo() {
     }
 
-    public ResponseVo(String code, String message, T result) {
+    public ResponseVo(String code, String msg, T data) {
         this.code = code;
-        this.message = message;
-        this.result = result;
+        this.msg = msg;
+        this.data = data;
     }
 
-    public static <T> ResponseVo<T> ofError(String code, String message) {
-        return new ResponseVo(code, message, null);
+    public static <T> ResponseVo<T> ofError(String code, String msg) {
+        return new ResponseVo(code, msg, null);
     }
 
-    public static <T> ResponseVo<T> ofError(String message) {
-        return new ResponseVo("500", message, null);
+    public static <T> ResponseVo<T> ofError(String msg) {
+        return new ResponseVo("500", msg, null);
     }
 
     public static <T> ResponseVo<T> ofError(ResponseCode responseCode) {
@@ -63,20 +63,20 @@ public class ResponseVo<T> implements Serializable {
         this.code = code;
     }
 
-    public String getMessage() {
-        return message;
+    public String getMsg() {
+        return msg;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 
-    public T getResult() {
-        return result;
+    public T getData() {
+        return data;
     }
 
-    public void setResult(T result) {
-        this.result = result;
+    public void setData(T data) {
+        this.data = data;
     }
 
     @Override
