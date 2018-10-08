@@ -102,9 +102,6 @@ public class AuthoritiesController extends BaseController {
     })
     @DeleteMapping("/role")
     public ResponseVo deleteRoleAuth(String roleId, String authId) {
-        if (roleId.equals("admin")) {
-            return ResponseVo.ofError("演示系统不能对管理员操作");
-        }
         if (authoritiesServiceImpl.deleteRoleAuth(roleId, authId)) {
             return ResponseVo.ofSuccess();
         }

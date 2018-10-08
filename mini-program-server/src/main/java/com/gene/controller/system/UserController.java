@@ -12,6 +12,7 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +23,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/user")
 public class UserController extends BaseController {
+
+    @Value("${default.password}")
+    private String password;
 
     @Autowired
     private UserServiceImpl userServiceImpl;
@@ -82,9 +86,6 @@ public class UserController extends BaseController {
     })
     @PutMapping()
     public ResponseVo update(User user, String roleId) {
-        if ("admin".equals(user.getUserId())) {
-            return ResponseVo.ofError("演示系统不能操作admin");
-        }
         List<Role> roleIds = new ArrayList<>();
         String[] split = roleId.split(",");
         for (String t : split) {
@@ -141,10 +142,7 @@ public class UserController extends BaseController {
     })
     @PutMapping("/psw/{id}")
     public ResponseVo resetPsw(@PathVariable("id") String userId) {
-        if ("admin".equals(userId)) {
-            return ResponseVo.ofError("演示系统不能操作admin");
-        }
-        if (userServiceImpl.updatePsw(userId, "123456")) {
+        if (userServiceImpl.updatePsw(userId, password)) {
             return ResponseVo.ofSuccess();
         } else {
             return ResponseVo.ofError("重置失败");
