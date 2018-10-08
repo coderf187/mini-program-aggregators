@@ -24,7 +24,7 @@ public class RoleController {
     @ApiOperation(value = "查询所有角色")
     @ApiImplicitParam(name = "access_token", value = "令牌", required = true, dataType = "String")
     @GetMapping()
-    public ResponseVo<List<Role>> list(String keyword) {
+    public DataGrid<Role> list(String keyword) {
         List<Role> list = roleServiceImpl.list(false);
         if (keyword != null && !keyword.trim().isEmpty()) {
             keyword = keyword.trim();
@@ -37,7 +37,7 @@ public class RoleController {
                 }
             }
         }
-        return ResponseVo.ofSuccess(list);
+        return new DataGrid<>(list);
     }
 
     @ApiOperation(value = "添加角色")

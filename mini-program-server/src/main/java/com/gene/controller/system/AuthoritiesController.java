@@ -3,6 +3,7 @@ package com.gene.controller.system;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.gene.controller.BaseController;
+import com.gene.dto.base.DataGrid;
 import com.gene.dto.base.ResponseVo;
 import com.gene.entity.system.Authorities;
 import com.gene.service.system.impl.AuthoritiesServiceImpl;
@@ -61,7 +62,7 @@ public class AuthoritiesController extends BaseController {
             @ApiImplicitParam(name = "access_token", value = "令牌", required = true, dataType = "String")
     })
     @GetMapping
-    public ResponseVo<List<JSONObject>> list(String roleId) {
+    public DataGrid<JSONObject> list(String roleId) {
         List<JSONObject> list = new ArrayList<>();
         List<Authorities> authorities = authoritiesServiceImpl.list();
         List<String> roleAuths = authoritiesServiceImpl.listByRoleId(roleId);
@@ -76,7 +77,7 @@ public class AuthoritiesController extends BaseController {
             }
             list.add(json);
         }
-        return ResponseVo.ofSuccess(list);
+        return new DataGrid<>(list);
     }
 
     @ApiOperation(value = "给角色添加权限")
