@@ -36,7 +36,7 @@ public class UserServiceImpl {
         return userMapper.getByUsername(username);
     }
 
-    public ResponseVo<DataGrid> list(int pageNum, int pageSize, boolean showDelete, String column, String value) {
+    public DataGrid list(int pageNum, int pageSize, boolean showDelete, String column, String value) {
         Wrapper<User> wrapper = new EntityWrapper<User>();
         if (StringUtils.isNotBlank(column)) {
             wrapper.like(column, value);
@@ -66,8 +66,7 @@ public class UserServiceImpl {
             }
             one.setRoles(tempUrs);
         }
-        DataGrid dataGrid = new DataGrid(userPage.getTotal(), userList);
-        return ResponseVo.ofSuccess(dataGrid);
+        return new DataGrid(userPage.getTotal(), userList);
     }
 
     public boolean add(User user) throws BusinessException {

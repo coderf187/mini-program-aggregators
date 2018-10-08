@@ -39,7 +39,7 @@ public class UserController extends BaseController {
             @ApiImplicitParam(name = "access_token", value = "令牌", required = true, dataType = "String")
     })
     @PostMapping("/query")
-    public ResponseVo<DataGrid> list(Integer page, Integer limit, String searchKey, String searchValue) {
+    public DataGrid list(Integer page, Integer limit, String searchKey, String searchValue) {
         if (page == null) {
             page = 0;
             limit = 0;

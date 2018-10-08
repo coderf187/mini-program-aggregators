@@ -53,8 +53,8 @@ layui.define(['config', 'admin', 'layer'], function (exports) {
             admin.req('userInfo', {}, function (data) {
                 layer.closeAll('loading');
                 if (200 == data.code) {
-                    config.putUser(data.user);
-                    success(data.user);
+                    config.putUser(data.result);
+                    success(data.result);
                 } else {
                     layer.msg('获取用户失败', {icon: 2});
                 }

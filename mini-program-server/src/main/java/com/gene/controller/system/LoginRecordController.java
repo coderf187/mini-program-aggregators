@@ -1,8 +1,6 @@
 package com.gene.controller.system;
 
 import com.gene.dto.base.DataGrid;
-import com.gene.dto.base.ResponseVo;
-import com.gene.entity.system.LoginRecord;
 import com.gene.service.system.impl.LoginRecordServiceImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -30,7 +28,7 @@ public class LoginRecordController {
             @ApiImplicitParam(name = "access_token", value = "令牌", required = true, dataType = "String")
     })
     @GetMapping()
-    public ResponseVo<DataGrid> list(Integer page, Integer limit, String startDate, String endDate, String account) {
+    public DataGrid list(Integer page, Integer limit, String startDate, String endDate, String account) {
         if (StringUtils.isBlank(startDate)) {
             startDate = null;
         } else {

@@ -1,6 +1,5 @@
 package com.gene.dto.base;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,28 +10,28 @@ import java.util.List;
  */
 public class DataGrid<T>{
 
-    private Long total = 0L;
+    private Long count;
 
-    private List<T> rows = new ArrayList<>();
+    private List<T> data;
 
-    public DataGrid(Long total, List<T> rows) {
-        this.total = total;
-        this.rows = rows;
+    public DataGrid(Long count, List<T> data) {
+        this.count = count;
+        this.data = data;
     }
 
-    public Long getTotal() {
-        return total;
+    public Long getCount() {
+        return count;
     }
 
-    public void setTotal(Long total) {
-        this.total = total;
+    public void setCount(Long count) {
+        this.count = count;
     }
 
-    public List<T> getRows() {
-        return rows;
+    public List<T> getData() {
+        return data;
     }
 
-    public void setRows(List<T> rows) {
-        this.rows = rows;
+    public void setData(List<T> data) {
+        this.data = data;
     }
 }
