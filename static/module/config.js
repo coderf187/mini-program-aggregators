@@ -1,7 +1,7 @@
 layui.define(function (exports) {
 
     var config = {
-        base_server: 'http://localhost:8088/', // 接口地址
+        base_server: 'http://localhost:8080/', // 接口地址
         tableName: 'easyweb',  // 存储表名
         autoRender: false,  // 窗口大小改变后是否自动重新渲染表格，解决layui数据表格非响应式的问题
         // 获取缓存的token

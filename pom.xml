@@ -137,5 +137,10 @@
         </plugins>
     </build>
 
+    <modules>
+        <module>mini-program-commons</module>
+        <module>mini-program-model</module>
+        <module>mini-program-server</module>
+    </modules>
 
 </project>
